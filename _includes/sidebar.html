@@ -23,11 +23,17 @@ border: 3px solid #FFF; height:150px;width:150px" />
       </a>
       {% endif %}
        {% if site.author.twitter %}
-      <a type="button" class="social2" href="http://twitter.com/{{ site.author.twitter }}">
+      <a type="button" class="social2" href="https://twitter.com/{{ site.author.twitter }}">
         <i class="fa fa-twitter"></i>
       </a>
       {% endif %}
      
+      {% if site.author.stackoverflow %}
+      <a type="button" class="social3" href="https://stackoverflow.com/:{{ site.author.stackoverflow }}">
+        <i class="fa fa-stack-overflow"></i>
+      </a>
+      {% endif %}
+      
       {% if site.author.email %}
       <a type="button" class="social3" href="mailto:{{ site.author.email }}">
         <i class="fa fa-envelope"></i>
