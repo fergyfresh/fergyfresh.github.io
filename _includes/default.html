@@ -77,7 +77,7 @@ $("#sidebar").animate({width:'20%'},'slow');
     <div class="collapse navbar-collapse" id="navbarHeaderCollapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{% if BASE_PATH %}{{ site.BASE_PATH }}{% else %}{{ site.BASE_PATH}}{% endif %}">Home</a></li>
-        <li><a href="{{ site.BASE_PATH}}/{{ site.categories_path }}">Categories</a></li>
+        <li><a href="{{ site.BASE_PATH}}/{{ site.about_path }}">About</a></li>
         <li><a href="{{ site.BASE_PATH}}/{{ site.tags_path }}">Tags</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -91,7 +91,7 @@ $("#sidebar").animate({width:'20%'},'slow');
    </button>
    <ul class="dropdown-menu pull-right" role="menu">
      <li><a href="{% if BASE_PATH %}{{ site.BASE_PATH }}{% else %}{{ site.BASE_PATH}}{% endif %}"><i class="fa fa-home"></i> Home</a></li>
-     <li><a href="{{ site.BASE_PATH}}/{{ site.categories_path }}"><i class="fa fa-folder"></i> Categories</a></li>
+     <li><a href="{{ site.BASE_PATH}}/{{ site.about_path }}"><i class="fa fa-folder"></i> About</a></li>
      <li class="divider"></li>
      <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
    </ul>
