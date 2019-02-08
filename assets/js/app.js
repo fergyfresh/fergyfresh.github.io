@@ -1,6 +1,6 @@
 $(document).ready(function(){
   alert("hello world");
-if(window.location.href=="http://meliodus.github.io/uno-dbyll/")
+if(window.location.href=="{{ site.BASE_URL }}")
 {
 $("#sidebar").css({width:'100%'});
 $("#btnblog").click(function(){
