@@ -109,6 +109,7 @@ footer {
 #container{
 	overflow-x:hidden;
 	z-index: 3;
+    height: 100%;
 }
 
 .title{
