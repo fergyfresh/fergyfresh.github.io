@@ -15,6 +15,11 @@ BASE_PATH: https://www.ferg.codes
 
 title: ferg codes
 
+
+highlighter: pygments
+paginate: 20
+paginate_path: "page/:num"
+
 #
 # Flags below are optional
 #
