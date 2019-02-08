@@ -1,6 +1,6 @@
 $(document).ready(function(){
   alert("hello world");
-if(window.location.href=="{{ site.BASE_URL }}")
+if(window.location.href=="https://ferg.codes")
 {
 $("#sidebar").css({width:'100%'});
 $("#btnblog").click(function(){
