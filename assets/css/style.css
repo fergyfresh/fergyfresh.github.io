@@ -84,7 +84,6 @@ footer {
 	height: 100%;
 	background-color:#115356;
 	background-size: 100% 100%;
-	color: #fff;
 	z-index: 5;
 	color: #fff;
 }
@@ -130,26 +129,22 @@ footer {
 }
 
 .social1{
-
 	border:1px solid white;
 	padding-left: 13px;
 	border-radius: 20px;
-margin-left: 3px;
+    margin-left: 3px;
 	margin-right: 3px;
 }
 
 .social2{
-
 	border:1px solid white;
 	padding-left: 15px;
 	border-radius: 20px;
 	margin-left: 3px;
 	margin-right: 3px;
-
 }
 
 .social3{
-
 	border:1px solid white;
 	padding-left: 13px;
 	border-radius: 20px;
