@@ -69,7 +69,7 @@ It is pretty simple to build a file with go, `go build main.go` is all you need.
  - using code:	gin.SetMode(gin.ReleaseMode)
 
 [GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
-[GIN-debug] Listening and serving HTTP on :8000
+[GIN-debug] Listening and serving HTTP on :8080
 ```
 
 If you've gotten this far congrats you built and ran your first go app!
