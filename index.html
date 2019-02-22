@@ -21,16 +21,6 @@ layout: default
   </p>
     <a href="{{ site.BASE_PATH }}{{ post.url }}" style="font-family: ubuntu">{{ post.title }}</a>
   </h2>
-
-  <div style="font-family: 'Raleway', sans-serif;font-size:large">
-    {% if post.fullview %}
-    {{ post.content }}
-    {% else %}
-    {% if post.shortinfo %}
-    {{ post.shortinfo }}
-    {% endif %}
-    <hr class="hr-line1 " style="background-color:#D8D8D8;width:25%;" align="left">
-  </div>
 </article>
 {% endfor %}
 <hr/>
