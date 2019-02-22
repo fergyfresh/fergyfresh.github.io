@@ -15,7 +15,7 @@ BASE_PATH: https://ferg.codes
 
 title: ferg codes
 
-about_path: about
+about_path: /about
 
 highlighter: rouge
 paginate: 20
