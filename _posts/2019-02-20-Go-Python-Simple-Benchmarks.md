@@ -25,7 +25,7 @@ Do this all in a subdirectory within pygo-benchmark, I called it go-stuff, but y
 
 Lets get to building. I use vim-go so you get a whole package scaffold upon the first `vim file.go` command. So when I type `vim main.go` I get:
 
-```
+```go
 package main
 
 import "fmt"
@@ -37,7 +37,7 @@ func main() {
 
 So you should also create a file called `main.go` and add the code above to that file. Now we are going to want to install gin. In order to do this we are going to type `go get -u github.com/gin-gonic/gin` and that will install the go module for us. Alright, now that we have gin installed lets modify the file to make our `main.go` use gin now and return a simple json object on a GET to `localhost:8080`, the default port for this webserver.
 
-```
+```go
 package main
 
 import "github.com/gin-gonic/gin"
@@ -82,7 +82,7 @@ Do all of this in a subdirectory in pygo-benchmark, I called it flask-stuff, but
 
 In order to make this post shorter I'm not going to go through the whole setup, I'm just gonna *blurgghhhhh* the file out here. Make a file called `main.py` with the contents below:
 
-```
+```python
 from flask import Flask
 
 app = Flask(__name__)
@@ -163,7 +163,7 @@ Our structure should look like this:
   * main.py
   * Dockerfile
 
-```
+```docker
 FROM python:3.6-alpine
 COPY . /
 WORKDIR /
@@ -184,7 +184,7 @@ Our structure should look like this:
   * main.go
   * Dockerfile
 
-```
+```docker
 FROM golang:latest
 ADD . .
 RUN go get -u github.com/gin-gonic/gin
