@@ -126,6 +126,8 @@ Because of the way this file is setup with the `if __name__...` stuff we can jus
 
 ## Benchmarking the pure speed of each setup.
 
+### In python using requests and timeit
+
 Now let's get the standard boilerplate dislaimer out here. You know, the one about how results may vary on the machine that you run the benchmarks on and that you really need to have a multitude of machines in order to really prove out benchmars, yada-yada.
 
 Alright, so with that boring stuff out of the way I LOVEEE using `timeit` to time stuff in python. You can do multiple runs one after the other in order to find a more valuable benchmark (the average response time).
@@ -147,7 +149,41 @@ python
 34.483878459897824
 ```
 
-Cool. So as you can see the the Go option is ~36% faster! That's amazing, no wonder people are going for go > python these days.
+Cool. So as you can see the the Go option is ~36% faster! That's amazing, no wonder people are going for go > python these days. But then again this isn't the most fair test as we can put a multithreadable WSGI server in front of our python setup. Now onto round two...
+
+### Using a new fangled benchmarking tool called wrk
+
+ and multithreading all the things! Thanks to a great suggestion by a dedicated reader who tweeted in, I am also adding in a multhreaded benchmark and adding gunicorn to sit in front of our Flask app.
+ 
+ In order to get up to speed with me you'll have to download and make the binary for wrk using the instructions found [here](https://github.com/wg/wrk/wiki/Installing-wrk-on-Linux) and if you look there are more options on the side if you're a Windows/Mac user. Also we are going to wanna `pip install gunicorn` as well and in the flask-stuff directory we are going to want to type `gunicorn -w 8 main:app` which tells gunicorn (our multithreaded WSGI server) to use 8 threads (since the output of `nproc --all` on my machine was 8) and it says look at the `main.py` file and the `app` function as the entrypoint for the app.
+ 
+ Now down to benchmarking the two using "a real benchmarking tool" - Some guy named Ben.
+ 
+
+```
+➜  go-hello wrk -t8 -c32 -d30s http://127.0.0.1:5000 # flask-python
+Running 30s test @ http://127.0.0.1:5000
+  8 threads and 32 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.58ms    1.70ms  42.16ms   94.75%
+    Req/Sec     1.12k   158.54     2.83k    84.48%
+  268403 requests in 30.10s, 45.82MB read
+Requests/sec:   8917.30
+Transfer/sec:      1.52MB
+➜  go-hello wrk -t8 -c32 -d30s http://127.0.0.1:8080 # go-gin
+Running 30s test @ http://127.0.0.1:8080
+  8 threads and 32 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.64ms    4.71ms  60.39ms   85.07%
+    Req/Sec     6.86k     0.93k   33.27k    82.09%
+  1639477 requests in 30.10s, 220.46MB read
+Requests/sec:  54471.39
+Transfer/sec:      7.32MB
+```
+
+Okay, maybe ben was right, this really shows how much better go is than python. Surprisingly though, the one thing python did have was a more deterministic response time as the stdev of the latency was < 2ms where it was almost 5ms in go.
+
+But once again, this is another benchmark proving out go is faster than python. Req/sec wise go is 6.125 times faster than flask, on average.
 
 ## Benchmarking for Docker image size.
 
@@ -168,8 +204,8 @@ FROM python:3.6-alpine
 COPY . /
 WORKDIR /
 RUN pip install flask
-ENTRYPOINT ["python"]
-CMD ["main.py"]
+RUN pip install gunicorn
+CMD ["gunicorn"  , "-w", "8", "main:app"]
 ```
 
 In order to build this you'd type `docker build . -t benchmark/py`.
