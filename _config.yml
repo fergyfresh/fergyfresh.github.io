@@ -12,7 +12,6 @@ description: Backend Developer from Brooklyn, NY
 avatar: https://avatars2.githubusercontent.com/u/9665592?v=4&u=f8164009607f4d2ed62082d667cdbff43cfe9940
 
 
-google_analytics: UA-82056931-1
 
 BASE_PATH: https://ferg.codes
 
@@ -52,7 +51,7 @@ author:
 disqus:
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
+google_analytics: UA-82056931-1
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
