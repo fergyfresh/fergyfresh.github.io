@@ -22,11 +22,13 @@ If you don't you have one you can use [this](https://github.com/fergyfresh/bookf
 First thing we need to do before we can setup the project we are going to want to Create a project in order to group all of our cloud components.
 
 You can create a project at https://cloud.console.google.com after you create an account in the top left of the screen. See screenshot below:
+
 ![Create Project](/assets/gke-blog/create-project.png)
 
 ### Create CloudSQL instance
 
 Create a postgres CloudSQL with a private IP since that is what we are going to need when connecting GKE to cloudSQL, you can technically do it with it being a public IP, but then you need to run a `cloud_sql_proxy` inside of the django container, so let's not get into that right now, this is actually easier.
+
 ![Create CloudSQL](/assets/gke-blog/create-sql.png)
 
 After you've created the CloudSQL instance we're going to want to create a database user and a database for our django project and grant `CREATE`, `READ`, `UPDATE`, `DELETE` to a user that I'll call `myproject-user` to the  database we will call `myproject-db`.
@@ -49,11 +51,13 @@ This will give us an image to deploy to our cluster when we get there.
 A cluster is a set of nodes that will run your services (instances of workloads, we will get to this).
 
 I suggest if this is your first time to create the smallest physical node type and only create one node. I understand this kinda defeats the purpose, but it will save you money while you're still figuring everything out. Also clicking the `Your first cluster` template is also a good start, but we need to click the `Availability, networking, security, and additional features` link near the bottom of the cluster settings, and we are looking to ENABLE the setting VPC-native.
+
 ![VPC Native](/assets/gke-blog/vpc-native.png)
 
 ### Deploy a workload
 
 After you click deploy under the workload tab you'll get a window that has nginx in the image section, we are gonna wanna use our own. In order to do this you'll want to click the blue SELECT link and navigate to the image we created earlier and here is where I will need you to fill in your environment variables that you set in section above that I said are things to remember.
+
 ![Workload finish](/assets/gke-blog/workload-finish.png)
 
 ### Exposing a service to the world.
